@@ -154,7 +154,7 @@ export default class HorizontalDatePicker extends Component {
       yearSelected: newDateArray.length > 0 && newDateArray[0].year,
     });
     if (defaultSelected && selectedIndex) {
-      this.ist.scrollToIndex({animated: true, index: selectedIndex})
+      this.list.scrollToIndex({animated: true, index: selectedIndex})
     }
   };
 
