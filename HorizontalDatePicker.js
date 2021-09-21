@@ -86,7 +86,7 @@ export default class HorizontalDatePicker extends Component {
           item.isSelected = true;
           isCurrentFoundDate = true;
           if(index > 0){
-            this.list.scrollToIndex({animated: true, index});
+            this.list.scrollToIndex({animated: true, 2});
           }
         }
       });
