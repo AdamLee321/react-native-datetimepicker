@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   flatListStyle: {
-    marginHorizontal: 10,
+    marginHorizontal: 0,
   },
   itemViewStyle: {
     alignSelf: 'center',
