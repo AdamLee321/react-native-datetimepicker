@@ -80,10 +80,11 @@ export default class HorizontalDatePicker extends Component {
     let isCurrentFoundDate = false;
     if (defaultSelected) {
       const selectedDate = moment(defaultSelected).format(defaultFormatDate);
-      newDateArray.map(item => {
+      newDateArray.map((item, index) => {
         if (item.date === selectedDate) {
           item.isSelected = true;
           isCurrentFoundDate = true;
+          this.list.scrollToIndex({animated: true, index});
         }
       });
       if (!isCurrentFoundDate) newDateArray[0].isSelected = true;
@@ -358,6 +359,10 @@ export default class HorizontalDatePicker extends Component {
     );
   };
 
+  getItemLayout = (data, index) => (
+    { length: 20, offset: 20 * index, index }
+  )
+
   render() {
     const {
       pickerType,
@@ -379,12 +384,13 @@ export default class HorizontalDatePicker extends Component {
         {(pickerType === 'date' || pickerType === 'datetime') && (
           <ImageBackground style={[styles.datePickerContainer, datePickerContainerStyle]} source={datePickerBG || null}>
             <FlatList
-              {...this.props}
+              ref={(list) => (this.list = list)}
               horizontal
               style={styles.flatListStyle}
               data={arrayDates}
               renderItem={this.renderDateItem}
               extraData={this.state}
+              getItemLayout={this.getItemLayout}
               onViewableItemsChanged={this.onVisibleItemChange}
               viewabilityConfig={this.viewabilityConfig}
               showsHorizontalScrollIndicator={false}
