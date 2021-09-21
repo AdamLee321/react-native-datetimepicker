@@ -369,6 +369,7 @@ export default class HorizontalDatePicker extends Component {
       datePickerBG,
     } = this.props;
     const { yearSelected, arrayDates, arrayTimes } = this.state;
+    console.log('arrayDates372',arrayDates)
     return (
       <View>
         {(pickerType === 'date' || pickerType === 'datetime') && isShowYear && (
