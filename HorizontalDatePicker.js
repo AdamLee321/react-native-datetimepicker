@@ -321,14 +321,14 @@ export default class HorizontalDatePicker extends Component {
             item.isSelected ? [styles.textSelected, selectedTextStyle] : [styles.textUnSelected, unSelectedTextStyle]
           }
         >
-          {item.day}
+          {item.month}
         </Text>
         <Text
           style={
             item.isSelected ? [styles.textSelected, selectedTextStyle] : [styles.textUnSelected, unSelectedTextStyle]
           }
         >
-          {item.month}
+          {item.day}
         </Text>
       </TouchableOpacity>
     );
