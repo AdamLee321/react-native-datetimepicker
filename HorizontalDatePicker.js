@@ -365,7 +365,7 @@ export default class HorizontalDatePicker extends Component {
   };
 
   scrollTo(index){
-    this.list.scrollToIndex({animated: true, index: selectedIndex})
+    this.list.scrollToIndex({animated: true, index: index})
   }
 
   getItemLayout = (data, index) => (
