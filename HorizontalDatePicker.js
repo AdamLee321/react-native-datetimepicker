@@ -379,6 +379,7 @@ export default class HorizontalDatePicker extends Component {
         {(pickerType === 'date' || pickerType === 'datetime') && (
           <ImageBackground style={[styles.datePickerContainer, datePickerContainerStyle]} source={datePickerBG || null}>
             <FlatList
+              {...this.props}
               horizontal
               style={styles.flatListStyle}
               data={arrayDates}
