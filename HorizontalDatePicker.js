@@ -82,9 +82,12 @@ export default class HorizontalDatePicker extends Component {
       const selectedDate = moment(defaultSelected).format(defaultFormatDate);
       newDateArray.map((item, index) => {
         if (item.date === selectedDate) {
+          console.log('index84', index)
           item.isSelected = true;
           isCurrentFoundDate = true;
-          this.list.scrollToIndex({animated: true, index});
+          if(index > 0){
+            this.list.scrollToIndex({animated: true, index});
+          }
         }
       });
       if (!isCurrentFoundDate) newDateArray[0].isSelected = true;
