@@ -79,6 +79,7 @@ export default class HorizontalDatePicker extends Component {
     }));
     let isCurrentFoundDate = false;
     if (defaultSelected) {
+      console.log('defaultSelected', defaultSelected)
       const selectedDate = moment(defaultSelected).format(defaultFormatDate);
       newDateArray.map(item => {
         if (item.date === selectedDate) {
@@ -105,6 +106,8 @@ export default class HorizontalDatePicker extends Component {
       if (!isCurrentFoundTime) newDateArray[0].isSelected = true;
     } else if (timeArray.length > 0) newTimeArray[0].isSelected = true;
     if ((pickerType === 'date' || pickerType == 'datetime') && onDateSelected) {
+      console.log('defaultSelected109', defaultSelected)
+      console.log('isCurrentFoundDate', isCurrentFoundDate)
       if (defaultSelected && isCurrentFoundDate) {
         onDateSelected(moment(defaultSelected).format(returnDateFormat));
       } else {
@@ -119,6 +122,7 @@ export default class HorizontalDatePicker extends Component {
       }
     }
     if (onDateTimeSelected) {
+      console.log('onDateTimeSelected123', onDateTimeSelected)
       onDateTimeSelected({
         date:
           pickerType === 'date' || pickerType == 'datetime'
