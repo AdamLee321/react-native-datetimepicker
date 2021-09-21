@@ -87,8 +87,8 @@ export default class HorizontalDatePicker extends Component {
           isCurrentFoundDate = true;
         }
       });
-      if (!isCurrentFoundDate) newDateArray[0].isSelected = true;
-    } else if (newDateArray.length > 0) {
+      if (isCurrentFoundDate) newDateArray[0].isSelected = false;
+    } else {
       newDateArray[0].isSelected = true;
     }
     
