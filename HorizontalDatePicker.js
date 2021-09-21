@@ -77,7 +77,7 @@ export default class HorizontalDatePicker extends Component {
       year: moment(item, defaultFormatDate).format(yearFormat),
       isSelected: false,
     }));
-    console.log('newDateArray80',newDateArray)
+    console.log('newDateArray80',JSON.stringify(newDateArray))
     let isCurrentFoundDate = false;
     if (defaultSelected) {
       const selectedDate = moment(defaultSelected).format(defaultFormatDate);
@@ -89,7 +89,7 @@ export default class HorizontalDatePicker extends Component {
       });
       if (!isCurrentFoundDate) newDateArray[0].isSelected = true;
     } else if (newDateArray.length > 0) newDateArray[0].isSelected = true;
-    console.log('newDateArray92',newDateArray)
+    console.log('newDateArray92', JSON.stringify(newDateArray))
     const newTimeArray = timeArray.map(item => ({
       time: item,
       timeDisplay: moment(item, defaultFormatTime).format(timeFormat),
@@ -106,7 +106,7 @@ export default class HorizontalDatePicker extends Component {
       });
       if (!isCurrentFoundTime) newDateArray[0].isSelected = true;
     } else if (timeArray.length > 0) newTimeArray[0].isSelected = true;
-    console.log('newDateArray109',newDateArray)
+    console.log('newDateArray109',JSON.stringify(newDateArray))
     if ((pickerType === 'date' || pickerType == 'datetime') && onDateSelected) {
       if (defaultSelected && isCurrentFoundDate) {
         onDateSelected(moment(defaultSelected).format(returnDateFormat));
@@ -114,7 +114,7 @@ export default class HorizontalDatePicker extends Component {
         onDateSelected(moment(newDateArray[0].date, defaultFormatDate).format(returnDateFormat));
       }
     }
-    console.log('newDateArray117',newDateArray)
+    console.log('newDateArray117',JSON.stringify(newDateArray))
     if ((pickerType === 'time' || pickerType == 'datetime') && onTimeSelected) {
       if (defaultSelected && isCurrentFoundTime) {
         onDateSelected(moment(defaultSelected).format(returnTimeFormat));
@@ -122,7 +122,7 @@ export default class HorizontalDatePicker extends Component {
         onTimeSelected(moment(newTimeArray[0].time, defaultFormatTime).format(returnTimeFormat));
       }
     }
-    console.log('newDateArray125',newDateArray)
+    console.log('newDateArray125',JSON.stringify(newDateArray))
     if (onDateTimeSelected) {
       onDateTimeSelected({
         date:
@@ -147,7 +147,7 @@ export default class HorizontalDatePicker extends Component {
             : '',
       });
     }
-    console.log('newDateArray150',newDateArray)
+    console.log('newDateArray150',JSON.stringify(newDateArray))
     this.setState({
       arrayDates: newDateArray,
       arrayTimes: newTimeArray,
