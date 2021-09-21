@@ -362,14 +362,6 @@ export default class HorizontalDatePicker extends Component {
     );
   };
 
-  scrollTo(index){
-    this.list.scrollToIndex({animated: true, index: index})
-  }
-
-  getItemLayout = (data, index) => (
-    { length: 20, offset: 20 * index, index }
-  )
-
   render() {
     const {
       pickerType,
@@ -397,7 +389,6 @@ export default class HorizontalDatePicker extends Component {
               data={arrayDates}
               renderItem={this.renderDateItem}
               extraData={this.state}
-              getItemLayout={this.getItemLayout}
               onViewableItemsChanged={this.onVisibleItemChange}
               viewabilityConfig={this.viewabilityConfig}
               showsHorizontalScrollIndicator={false}
