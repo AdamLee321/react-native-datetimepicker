@@ -79,7 +79,6 @@ export default class HorizontalDatePicker extends Component {
     }));
     let isCurrentFoundDate = false;
     if (defaultSelected) {
-      console.log('defaultSelected', defaultSelected)
       const selectedDate = moment(defaultSelected).format(defaultFormatDate);
       newDateArray.map(item => {
         if (item.date === selectedDate) {
@@ -106,13 +105,9 @@ export default class HorizontalDatePicker extends Component {
       if (!isCurrentFoundTime) newDateArray[0].isSelected = true;
     } else if (timeArray.length > 0) newTimeArray[0].isSelected = true;
     if ((pickerType === 'date' || pickerType == 'datetime') && onDateSelected) {
-      console.log('defaultSelected109', defaultSelected)
-      console.log('isCurrentFoundDate', isCurrentFoundDate)
       if (defaultSelected && isCurrentFoundDate) {
-        console.log('if state ths is right')
         onDateSelected(moment(defaultSelected).format(returnDateFormat));
       } else {
-        console.log('else state this is wrong')
         onDateSelected(moment(newDateArray[0].date, defaultFormatDate).format(returnDateFormat));
       }
     }
@@ -123,7 +118,30 @@ export default class HorizontalDatePicker extends Component {
         onTimeSelected(moment(newTimeArray[0].time, defaultFormatTime).format(returnTimeFormat));
       }
     }
-    
+    if (onDateTimeSelected) {
+      onDateTimeSelected({
+        date:
+          pickerType === 'date' || pickerType == 'datetime'
+            ? defaultSelected && isCurrentFoundDate
+              ? moment(defaultSelected).format(returnDateFormat)
+              : moment(newDateArray[0].date, defaultFormatDate).format(returnDateFormat)
+            : '',
+        time:
+          pickerType === 'time' || pickerType == 'datetime'
+            ? defaultSelected && isCurrentFoundTime
+              ? moment(defaultSelected).format(returnTimeFormat)
+              : moment(newTimeArray[0].time, defaultFormatTime).format(returnTimeFormat)
+            : '',
+        datetime:
+          pickerType == 'datetime'
+            ? defaultSelected && isCurrentFoundDate && isCurrentFoundTime
+              ? moment(defaultSelected).format(returnDateTimeFormat)
+              : moment(newDateArray[0].date + newTimeArray[0].time, defaultFormatDate + defaultFormatTime).format(
+                  returnDateTimeFormat
+                )
+            : '',
+      });
+    }
     this.setState({
       arrayDates: newDateArray,
       arrayTimes: newTimeArray,
