@@ -322,7 +322,7 @@ export default class HorizontalDatePicker extends Component {
             item.isSelected ? [styles.textSelected, selectedMonthTextStyle] : [styles.textUnSelected, unSelectedMonthTextStyle]
           }
         >
-          {today ? 'Today' : item.month}
+          {today == item.date ? 'Today' : item.month}
         </Text>
         <Text
           style={
