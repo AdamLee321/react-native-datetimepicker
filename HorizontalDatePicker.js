@@ -312,7 +312,7 @@ export default class HorizontalDatePicker extends Component {
   keyExtractorDate = item => item.date.toString();
 
   renderDateItem = ({ item }) => {
-    let date = moment();
+    let date = moment(item.date, 'DD-MM-YYYY');
     let today = moment().isSame(date, 'day');
     const { selectedTextStyle, selectedMonthTextStyle, unSelectedTextStyle, unSelectedMonthTextStyle } = this.props;
 
