@@ -312,13 +312,14 @@ export default class HorizontalDatePicker extends Component {
   keyExtractorDate = item => item.date.toString();
 
   renderDateItem = ({ item }) => {
-    const { selectedTextStyle, unSelectedTextStyle } = this.props;
+    console.log('item315', item);
+    const { selectedTextStyle, selectedMonthTextStyle, unSelectedTextStyle, unSelectedMonthTextStyle } = this.props;
 
     return (
       <TouchableOpacity style={styles.itemViewStyle} onPress={this.onPressDate(item)}>
         <Text
           style={
-            item.isSelected ? [styles.textSelected, selectedTextStyle] : [styles.textUnSelected, unSelectedTextStyle]
+            item.isSelected ? [styles.textSelected, selectedMonthTextStyle] : [styles.textUnSelected, unSelectedMonthTextStyle]
           }
         >
           {item.month}
