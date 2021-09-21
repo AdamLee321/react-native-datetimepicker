@@ -22,7 +22,7 @@ export default class HorizontalDatePicker extends Component {
     };
   }
 
-  componentDidMount = () => {
+    componentDidMount = () => {
     const {
       pickerType,
       returnDateFormat,
@@ -41,7 +41,6 @@ export default class HorizontalDatePicker extends Component {
     } = this.props;
     let dateArray = [];
     let timeArray = [];
-    let selectedIndex = null
 
     if (minDate && maxDate) {
       if (pickerType === 'date' || pickerType == 'datetime') dateArray = this.getDateList(minDate, maxDate);
@@ -81,17 +80,14 @@ export default class HorizontalDatePicker extends Component {
     let isCurrentFoundDate = false;
     if (defaultSelected) {
       const selectedDate = moment(defaultSelected).format(defaultFormatDate);
-      newDateArray.map((item, index) => {
+      newDateArray.map(item => {
         if (item.date === selectedDate) {
           item.isSelected = true;
           isCurrentFoundDate = true;
         }
       });
-      if (isCurrentFoundDate) newDateArray[0].isSelected = false;
-    } else {
-      newDateArray[0].isSelected = true;
-    }
-    
+      if (!isCurrentFoundDate) newDateArray[0].isSelected = true;
+    } else if (newDateArray.length > 0) newDateArray[0].isSelected = true;
     const newTimeArray = timeArray.map(item => ({
       time: item,
       timeDisplay: moment(item, defaultFormatTime).format(timeFormat),
@@ -443,7 +439,7 @@ HorizontalDatePicker.propTypes = {
   onDateTimeSelected: PropTypes.func,
 };
 HorizontalDatePicker.defaultProps = {
-  pickerType: 'datetime',
+  pickerType: 'date',
   minDate: null,
   maxDate: null,
   defaultSelected: null,
