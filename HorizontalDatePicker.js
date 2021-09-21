@@ -312,10 +312,7 @@ export default class HorizontalDatePicker extends Component {
   keyExtractorDate = item => item.date.toString();
 
   renderDateItem = ({ item }) => {
-    let today = moment().isSame(item.date, 'day')
-    console.log('today', today)
-    console.log('item.date', item.date)
-    console.log('is today', today == item.date)
+    let today = moment(item.date).isSame(moment(), 'day')
     const { selectedTextStyle, selectedMonthTextStyle, unSelectedTextStyle, unSelectedMonthTextStyle } = this.props;
 
     return (
@@ -325,7 +322,7 @@ export default class HorizontalDatePicker extends Component {
             item.isSelected ? [styles.textSelected, selectedMonthTextStyle] : [styles.textUnSelected, unSelectedMonthTextStyle]
           }
         >
-          {today == item.date ? 'Today' : item.month}
+          {today ? 'Today' : item.month}
         </Text>
         <Text
           style={
