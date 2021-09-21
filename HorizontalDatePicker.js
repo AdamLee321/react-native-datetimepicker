@@ -123,33 +123,7 @@ export default class HorizontalDatePicker extends Component {
         onTimeSelected(moment(newTimeArray[0].time, defaultFormatTime).format(returnTimeFormat));
       }
     }
-    if (onDateTimeSelected) {
-      console.log('onDateTimeSelected123', onDateTimeSelected)
-      console.log('defaultSelected', defaultSelected)
-      console.log('isCurrentFoundDate', isCurrentFoundDate)
-      onDateTimeSelected({
-        date:
-          pickerType === 'date' || pickerType == 'datetime'
-            ? defaultSelected && isCurrentFoundDate
-              ? moment(defaultSelected).format(returnDateFormat)
-              : moment(newDateArray[0].date, defaultFormatDate).format(returnDateFormat)
-            : '',
-        time:
-          pickerType === 'time' || pickerType == 'datetime'
-            ? defaultSelected && isCurrentFoundTime
-              ? moment(defaultSelected).format(returnTimeFormat)
-              : moment(newTimeArray[0].time, defaultFormatTime).format(returnTimeFormat)
-            : '',
-        datetime:
-          pickerType == 'datetime'
-            ? defaultSelected && isCurrentFoundDate && isCurrentFoundTime
-              ? moment(defaultSelected).format(returnDateTimeFormat)
-              : moment(newDateArray[0].date + newTimeArray[0].time, defaultFormatDate + defaultFormatTime).format(
-                  returnDateTimeFormat
-                )
-            : '',
-      });
-    }
+    
     this.setState({
       arrayDates: newDateArray,
       arrayTimes: newTimeArray,
