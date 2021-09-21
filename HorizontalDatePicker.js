@@ -313,6 +313,9 @@ export default class HorizontalDatePicker extends Component {
 
   renderDateItem = ({ item }) => {
     let today = moment().isSame(item.date, 'day')
+    console.log('today', today)
+    console.log('item.date', item.date)
+    console.log('is today', today == item.date)
     const { selectedTextStyle, selectedMonthTextStyle, unSelectedTextStyle, unSelectedMonthTextStyle } = this.props;
 
     return (
