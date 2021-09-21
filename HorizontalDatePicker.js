@@ -83,7 +83,6 @@ export default class HorizontalDatePicker extends Component {
       const selectedDate = moment(defaultSelected).format(defaultFormatDate);
       newDateArray.map((item, index) => {
         if (item.date === selectedDate) {
-          console.log('selectedIndex', index);
           selectedIndex = index
           item.isSelected = true;
           isCurrentFoundDate = true;
@@ -152,10 +151,8 @@ export default class HorizontalDatePicker extends Component {
       arrayDates: newDateArray,
       arrayTimes: newTimeArray,
       yearSelected: newDateArray.length > 0 && newDateArray[0].year,
+      selectedIndex
     });
-    if (defaultSelected && selectedIndex) {
-      this.list.scrollToIndex({animated: true, index: selectedIndex})
-    }
   };
 
   getDateList = (minDate, maxDate) => {
@@ -366,6 +363,10 @@ export default class HorizontalDatePicker extends Component {
       </TouchableOpacity>
     );
   };
+
+  scrollTo(index){
+    this.list.scrollToIndex({animated: true, index: selectedIndex})
+  }
 
   getItemLayout = (data, index) => (
     { length: 20, offset: 20 * index, index }
